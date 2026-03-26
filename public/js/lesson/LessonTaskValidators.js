@@ -329,10 +329,7 @@ if (taskId === "5-1") {
 
         const korMatch =
             input.match(/\b(let|const)\s+kor\s*=\s*(0|[1-9][0-9]?)\s*;?/m);
-        let korOk = false;
-        if (korMatch) {
-            korOk = !!korMatch;
-        }
+        const korOk = !!korMatch;
 
         const diakOk =
             /\b(let|const)\s+diak\s*=\s*(true|false)\s*;?/m.test(input);

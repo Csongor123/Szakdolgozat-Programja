@@ -1,4 +1,4 @@
-let progress = loadProgress();
+let progress = {};
 let codeIsValid = false;
 
 const attemptManager = new window.LessonAttemptManager();
@@ -428,7 +428,8 @@ function runTask(button) {
 
 /*Lecke oldal betöltése*/
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => {
+    progress = await loadProgress();
     const params = new URLSearchParams(window.location.search);
     const id = parseInt(params.get("id"), 10);
     const lesson = lessonData[id];

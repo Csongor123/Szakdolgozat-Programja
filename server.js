@@ -94,7 +94,6 @@ app.delete("/api/users/:name", async (req, res) => {
     const name = req.params.name;
     await run(`DELETE FROM users WHERE name = ?`, [name]);
     
-    await run(`DELETE FROM progress WHERE user_name = ?`, [name]);
     res.json({ ok: true });
   } catch (e) {
     res.status(500).json({ error: e.message });
