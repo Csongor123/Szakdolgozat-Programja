@@ -1,9 +1,4 @@
 class LessonTaskValidators {
-    normalizeCode(str) {
-        return String(str)
-            .replace(/\s+/g, "")
-            .trim();
-    }
 
     validateRangeRules(taskId, input) {
         const rangeTasks = new Set([
@@ -749,15 +744,17 @@ return "ok";
     }
 
     validateTask_9_1(input) {
-        const expectedCode =
-            'fetch("https://api.example.com").then(res => res.json()).then(data => console.log(data));';
+    const code = String(input).replace(/\s+/g, "");
 
-        if (this.normalizeCode(input) !== this.normalizeCode(expectedCode)) {
-            return "Írd meg pontosan a fetch → json → console.log láncot.";
-        }
+    const expected =
+        'fetch("https://api.example.com").then(res=>res.json()).then(data=>console.log(data));';
 
-        return "ok";
+    if (code !== expected) {
+        return "Írd meg pontosan a fetch → json → console.log láncot.";
     }
+
+    return "ok";
+}
 
     getSolution(taskId) {
         if (!window.TASK_SOLUTIONS) {

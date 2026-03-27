@@ -32,20 +32,12 @@ class LessonAttemptManager {
         return `lock:${this.getUser()}:${taskId}`;
     }
 
-    isLocked(taskId) {
-        return localStorage.getItem(this.getLockKey(taskId)) === "1";
-    }
-
     unlockTask(taskId) {
         localStorage.removeItem(this.getLockKey(taskId));
     }
 
     getShownKey(taskId) {
         return `shown:${this.getUser()}:${taskId}`;
-    }
-
-    wasSolutionShown(taskId) {
-        return localStorage.getItem(this.getShownKey(taskId)) === "1";
     }
 
     markSolutionShown(taskId) {

@@ -7,12 +7,6 @@ const taskValidators = new window.LessonTaskValidators();
 
 /*Segédfüggvények*/
 
-function normalizeCode(str) {
-    return String(str)
-        .replace(/\s+/g, "")
-        .trim();
-}
-
 function hasMissingSemicolon(code) {
     const lines = String(code).split("\n");
     let objectAssignmentOpen = false;
@@ -264,13 +258,13 @@ function runTask(button) {
                 );
             }
         } else if (taskId === "9-1") {
-            const result = taskValidators.validateTask_9_1(input);
-            if (result !== "ok") {
-                errors.push(result);
-            }
-        } else {
-            errors = taskValidators.analyzeCode(input, expected);
-        }
+    const result = taskValidators.validateTask_9_1(input);
+    if (result !== "ok") {
+        errors.push(result);
+    }
+} else {
+    errors = taskValidators.analyzeCode(input, expected);
+}
 
         if (errors.length > 0) {
             let extra = "";

@@ -77,7 +77,7 @@ const lessonData = {
                 <button class="run-btn"
                     data-task-id="2-1"
                     data-mode="strict"
-                    data-range="0-99"
+                    
                     onclick="runTask(this)">▶ Futtatás</button>
                 <div class="output-box"></div>
             </div>
