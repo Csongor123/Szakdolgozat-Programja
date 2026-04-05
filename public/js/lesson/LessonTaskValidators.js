@@ -766,51 +766,6 @@ return "ok";
     analyzeCode(input, expected) {
         const errors = [];
 
-        const pairs = [
-            ["(", ")"],
-            ["{", "}"],
-            ["[", "]"]
-        ];
-
-        pairs.forEach(([open, close]) => {
-            const openCount =
-                (input.match(new RegExp(`\\${open}`, "g")) || []).length;
-            const closeCount =
-                (input.match(new RegExp(`\\${close}`, "g")) || []).length;
-            if (openCount !== closeCount) {
-                errors.push(
-                    `Hiányzó vagy felesleges <code>${open}</code> / <code>${close}</code> zárójel`
-                );
-            }
-        });
-
-        const doubleQuotes = (input.match(/"/g) || []).length;
-        if (doubleQuotes % 2 !== 0) {
-            errors.push('Hiányzó vagy rossz <code>"</code> idézőjel');
-        }
-
-        const singleQuotes = (input.match(/'/g) || []).length;
-        if (singleQuotes % 2 !== 0) {
-            errors.push("Hiányzó vagy rossz <code>'</code> idézőjel");
-        }
-
-        if (expected.includes(";")) {
-            const inputSemi = (input.match(/;/g) || []).length;
-            const expectedSemi = (expected.match(/;/g) || []).length;
-            if (inputSemi < expectedSemi) {
-                errors.push("Hiányzó <code>;</code> (pontosvessző)");
-            }
-        }
-
-        ["if", "else", "for", "function", "return", "let", "const"]
-            .forEach(keyword => {
-                if (expected.includes(keyword) && !input.includes(keyword)) {
-                    errors.push(
-                        `Hiányzik a <code>${keyword}</code> kulcsszó`
-                    );
-                }
-            });
-
         const callRegex = /\b[a-zA-Z_$][\w$]*\s*\(/g;
         const expectedCalls = expected.match(callRegex) || [];
         const inputCalls = input.match(callRegex) || [];
