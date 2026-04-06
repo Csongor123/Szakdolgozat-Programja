@@ -343,13 +343,6 @@ if (taskId === "5-1") {
             return "missingKor";
         }
 
-        const korRaw = korMatch[2];
-        const korValue = parseInt(korRaw, 10);
-
-        if (korRaw.startsWith("-") || korValue < 0 || korValue > 99) {
-            return "invalidNumber";
-        }
-
         const ifOk = /if\s*\(\s*kor\s*>=\s*18\s*\)/.test(input);
         if (!ifOk) {
             return "missingIf";
@@ -391,18 +384,6 @@ if (taskId === "5-1") {
         if (!match) {
             return "invalidLoop";
         }
-
-        const start = parseInt(match[1], 10);
-        const limit = parseInt(match[2], 10);
-
-        if (
-            !Number.isInteger(start) ||
-            !Number.isInteger(limit) ||
-            start < 0 || start > 99 ||
-            limit < 0 || limit > 99
-        ) {
-        return "invalidRange";
-    }
 
     const logOk = /console\.log\s*\(\s*i\s*\)/.test(input);
     if (!logOk) {
@@ -535,12 +516,6 @@ if (taskId === "5-1") {
 
     for (const item of items) {
         if (!/^\d+$/.test(item)) {
-            return "arrayError";
-        }
-
-        const n = parseInt(item, 10);
-
-        if (n < 0 || n > 99) {
             return "arrayError";
         }
     }

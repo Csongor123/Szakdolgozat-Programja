@@ -160,9 +160,7 @@ function runTask(button) {
         if (taskId === "3-1") {
             const result = taskValidators.validateTask_3_1(input);
 
-            if (result === "invalidNumber") {
-                errors.push("A kor csak 0 és 99 közötti egész szám lehet.");
-            } else if (result === "missingIf") {
+             if (result === "missingIf") {
                 errors.push("A feltételben kötelező: if (kor >= 18).");
             } else if (result === "missingElse") {
                 errors.push("Az if szerkezethez else ág is szükséges.");
@@ -177,11 +175,7 @@ function runTask(button) {
             }
         } else if (taskId === "3-2") {
             const result = taskValidators.validateTask_3_2(input);
-            if (result === "invalidRange") {
-                errors.push(
-                    "A for ciklusban lévő számok csak 0 és 99 közötti számok lehetnek."
-                );
-            } else if (result !== "ok") {
+             if (result !== "ok") {
                 errors.push("A feladat nem teljesül.");
             }
         } else if (taskId === "2-1") {
@@ -204,7 +198,7 @@ function runTask(button) {
 
     if (result === "arrayError") {
         errors.push(
-            "A tömb csak 0 és 99 közötti egész számokat tartalmazhat, legfeljebb 99 elemmel, és az első számot valamint a hosszát kell kiírni."
+            "A tömb csak 0 és 99 közötti egész számokat tartalmazhat, legfeljebb 100 elemmel, és az első számot valamint a hosszát kell kiírni."
         );
     } else if (
         result === "missingArrayName" ||
